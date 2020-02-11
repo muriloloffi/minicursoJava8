@@ -28,4 +28,31 @@ public class Restaurant {
         this.id = id;
         return this;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Restaurant setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Restaurant setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Restaurant setEmail(String email) {
+        this.email = email;
+        return this;
+    }
 }
