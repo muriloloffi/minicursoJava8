@@ -35,7 +35,5 @@ public class RestaurantService {
                 .setEmail(restaurant.getEmail())
                 .setName(restaurant.getName())
                 .setPhone(restaurant.getPhone());
-
-
     }
 }

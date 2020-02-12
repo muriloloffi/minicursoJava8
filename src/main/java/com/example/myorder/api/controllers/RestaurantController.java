@@ -28,8 +28,10 @@ public class RestaurantController {
         restaurantService.createRestaurant(createRestaurantDto);
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "")
     public RestaurantResponseDto get(@RequestParam @Param("id") Integer id) {
-
+        return restaurantService.getById(id);
     }
 
 }
