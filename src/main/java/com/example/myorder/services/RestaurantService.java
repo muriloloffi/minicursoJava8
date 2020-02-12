@@ -27,6 +27,7 @@ public class RestaurantService {
 
     }
 
+
     public RestaurantResponseDto getById(Integer id){
         Optional<Restaurant> optional = restaurantRepository.findById(id);
         Restaurant restaurant = optional.get();

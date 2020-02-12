@@ -8,7 +8,7 @@ public class UserResponseDto {
 
     @NotEmpty
     @ApiModelProperty(value = "${user.create.id}")
-    private String id;
+    private Integer id;
 
     @NotEmpty
     @ApiModelProperty(value = "${user.create.name}")
@@ -26,11 +26,11 @@ public class UserResponseDto {
     @ApiModelProperty(value = "${user.create.address}")
     private String address;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public UserResponseDto setId(String id) {
+    public UserResponseDto setId(Integer id) {
         this.id = id;
         return this;
     }

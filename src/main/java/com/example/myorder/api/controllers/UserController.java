@@ -8,6 +8,7 @@ import com.example.myorder.services.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -28,5 +29,11 @@ public class UserController {
             @ApiParam(value = "Objeto que contém as informações do usuário")
             @RequestBody @Valid CreateUserDto createUserDto) {
         return userService.create(createUserDto);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "")
+    public UserResponseDto get(@RequestParam @Param("id") Integer id) {
+        return userService.getById(id);
     }
 }
