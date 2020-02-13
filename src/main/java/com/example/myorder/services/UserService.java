@@ -12,7 +12,10 @@ import com.example.myorder.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -68,4 +71,35 @@ public class UserService {
 //        return UserRepository.save(user);
 //    }
     }
+
+
+    public List<UserResponseDto> listAll(){
+        List<User> users = userRepository.findAll();
+        List<UserResponseDto> userResponseList = new ArrayList<>();
+
+        for (User user : users) {
+            UserResponseDto userResponse = new UserResponseDto();
+            userResponse.setName(user.getName());
+            userResponse.setAddress(user.getAddress());
+            userResponse.setEmail(user.getEmail());
+            userResponse.setPhone(user.getPhone());
+
+            userResponseList.add(userResponse);
+        }
+
+        return userResponseList;
+    }
+
+//    public  List<UserResponseDto> listAll() {
+//        List<User> users = userRepository.findAll();
+//
+//        users.stream().map(user -> {
+//            new UserResponseDto()
+//                    .setName(user.getName())
+//                    .setEmail(user.getEmail())
+//                    .setPhone(user.getPhone())
+//                    .setAddress(user.getAddress()))
+//                    .collect(Collectors.toList());
+//        })
+//    }
 }
