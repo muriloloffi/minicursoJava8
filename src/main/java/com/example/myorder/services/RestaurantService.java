@@ -3,6 +3,7 @@ package com.example.myorder.services;
 import com.example.myorder.api.dtos.CreateRestaurantDto;
 import com.example.myorder.api.dtos.RestaurantResponseDto;
 import com.example.myorder.entities.Restaurant;
+import com.example.myorder.exception.NotFoundException;
 import com.example.myorder.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,13 +29,24 @@ public class RestaurantService {
     }
 
 
+
     public RestaurantResponseDto getById(Integer id){
-        Optional<Restaurant> optional = restaurantRepository.findById(id);
-        Restaurant restaurant = optional.get();
+        Restaurant restaurant = findById(id);
         return new RestaurantResponseDto()
                 .setId(restaurant.getId())
                 .setEmail(restaurant.getEmail())
                 .setName(restaurant.getName())
                 .setPhone(restaurant.getPhone());
+    }
+
+    public Restaurant findById(Integer id){
+        Optional<Restaurant> optional = restaurantRepository.findById(id);
+
+        if(!optional.isPresent()){
+            throw new NotFoundException("Restaurante não encontrado.");
+        }
+        Restaurant restaurant = optional.get();
+
+        return restaurant;
     }
 }

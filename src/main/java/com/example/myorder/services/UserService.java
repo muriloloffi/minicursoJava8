@@ -1,10 +1,8 @@
 package com.example.myorder.services;
 
 import com.example.myorder.api.dtos.CreateUserDto;
-import com.example.myorder.api.dtos.RestaurantResponseDto;
 import com.example.myorder.api.dtos.UserResponseDto;
 import com.example.myorder.api.mappers.UserMapper;
-import com.example.myorder.entities.Restaurant;
 import com.example.myorder.entities.User;
 import com.example.myorder.exception.AlreadyExistsException;
 import com.example.myorder.exception.NotFoundException;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
