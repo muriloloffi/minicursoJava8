@@ -4,10 +4,12 @@ import com.example.myorder.enums.OrderStatusEnum;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "USER_ORDER")
 public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -21,6 +23,10 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "RESTAURANTE", nullable = false)
     private Restaurant restaurant;
+
+    @OrderBy("id ASC")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItem> items;
 
     public Integer getId() {
         return id;
