@@ -73,6 +73,15 @@ public class Order {
         return this;
     }
 
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public Order setItems(List<OrderItem> items) {
+        this.items = items;
+        return this;
+    }
+
     @ManyToOne
     @JoinColumn(name = "USER", nullable = false)
     private User user;
